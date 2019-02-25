@@ -1,0 +1,150 @@
+/*
+	Greg Pedersen
+	CPTS 121 Spring 2019 Lab Section 5
+	January 18, 2019
+	This is a program that runs many different kinds of algorithms. Among them including:
+		Newtons Second Law
+		Volume of a cylinder
+		Character Encoding
+		Distance between two points
+		Tangent
+		Total Resistance
+		General Equations
+*/
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14159265359 
+
+int main(void)
+{
+//////////Newtons Second Law Program///////////////////////////////////////////////////////////////////////////
+	double mass = 0.0, accel = 0.0, force = 0.0; // Declare all variables 
+	
+	printf("Newtons Second Law: \n\n"); 
+
+	printf("Enter a value for Mass: "); // Input values for Mass and Acceleration
+	scanf_s("%lf", &mass);
+	
+	printf("Enter a value for Acceleration: ");
+	scanf_s("%lf", &accel);
+
+	force = mass * accel;
+
+	printf("Force is Equal to: %lf \n\n\n", force); // Final output of Force
+
+//////////Volume of a Cylinder Program/////////////////////////////////////////////////////////////////////////
+
+	double volume = 0.0, radius = 0.0, height = 0.0;  // Declare all variables
+	printf("Volume of a Cylinder \n\n");
+	
+	printf("Enter a value for radius: "); // Inputs for Radius and Height
+	scanf_s("%lf", &radius);
+	
+	printf("Enter a value for height: ");
+	scanf_s("%lf", &height);
+
+	volume = PI * pow(radius, 2.0) * height; // Final equation using imported PI
+
+	printf("Volume is Equal to: %lf \n\n\n", volume);
+
+///////Character Encoding Program/////////////////////////////////////////////////////////////////////////////////
+
+
+	printf("Characetr Encoding\n\n");
+
+	char encoded = '\0', plaintext = '\0'; // \0 is the null character
+	int shift = 0;
+
+	printf("Enter a plaintext character:"); // Input values for character and characters encoding
+	scanf_s(" %c", &plaintext);
+
+	printf("Enter a shift value: ");
+	scanf_s(" %d", &shift);
+
+	
+	encoded = (plaintext - 'A') + 'a' - shift; // Formula for calculating encoded characters
+	printf("encoded: %c\n\n\n", encoded);
+
+////////Distance Between Two Points Program////////////////////////////////////////////////////////////////////
+
+	double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0, distance = 0.0;  // Declare all variables
+	printf("Distance Between Two Points\n\n");
+
+	printf("Enter an X1 value: "); // Input values for the finnal calculation, here we input X1, X2, Y1, and Y2.
+	scanf_s("%lf", &x1);
+
+	printf("Enter an Y1 value: ");
+	scanf_s("%lf", &y1);
+
+	printf("Enter an X2 value: ");
+	scanf_s("%lf", &x2);
+
+	printf("Enter a value for Y2: ");
+	scanf_s("%lf", &y2);
+
+	distance = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)); // Final equation utilizing power and square root functions
+
+	printf("Distance = %lf\n\n\n", distance);
+
+///////Tangent Program/////////////////////////////////////////////////////////////////////////////////////////
+
+	double theta = 0.0, tan_theta = 0.0, cos2 = 0.0, sin2 = 0.0;  // Declare all variables
+	
+	printf("Finding Tangent of Theta Value \n\n");
+	printf("Enter a value for theta: "); // This is a more simple program that uses a theta input as well as sin and cos values to find the tangent of the theta value
+
+	scanf_s("%lf", &theta);
+	sin2 = sin(theta);
+	cos2 = cos(theta);
+
+	tan_theta = sin2 / cos2;
+
+	printf("Tangent of Theta = %lf\n\n\n", tan_theta);
+
+////////Resistance Calculations////////////////////////////////////////////////////////////////////////////////
+
+	printf("Total Resistance Calculator: \n\n");
+
+	int R1 = 0, R2 = 0, R3 = 0;  // Declare all variables
+	double resistance = 0.0;
+
+
+	printf("Input Resistor 1: ");
+	scanf_s("%d", &R1);
+
+	printf("Input Resistor 2: ");
+	scanf_s("%d", &R2);
+
+	printf("Input Resistor 3: ");
+	scanf_s("%d", &R3);
+	
+	resistance = 1 / (1 / ((double)R1) + 1 / ((double)R2) + 1 / ((double)R3)); // Final calculation utilizing doubles
+
+
+	printf("Total Resistance = %lf ohms \n\n\n", resistance); 
+
+///////General Equation////////////////////////////////////////////////////////////////////////////////////////
+	double z = 0, x = 0, y = 0;  // Declare all variables
+	double y22 = 0.0;
+	int a = 0;
+	printf("General Equation Calculator \n\n");
+
+	printf("Enter a value for a: ");
+	scanf_s("%d", &a);
+	
+	printf("Enter a value for x: ");
+	scanf_s("%d", &x);
+
+	printf("Enter a value for y: ");
+	scanf_s("%d", &y);
+
+	printf("Enter a value for z: ");
+	scanf_s("%d", &z);
+
+
+	y22 = ((double)2 / 3) - y + z * x / (a % 2) + PI; 
+
+	printf("Y= %lf\n\n", y22);
+
+	return 0;
+}
