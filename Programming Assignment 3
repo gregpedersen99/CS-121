@@ -1,0 +1,130 @@
+/*
+Greg Pedersen
+CPTS 121 Spring 2019, Lab Section 5
+February 8, 2019
+This program utilizes functions, if statements, three file format, and input/output file readings to
+pull numbers from a file, make computations, and transfer the new numbers after computations into an
+output file. It consists of 10 functions total that range from file reading and writing function, to standard
+calculations ranging from sum functions to ones concerning standard deviation.
+*/
+
+#include "head.h"
+#include <math.h>
+
+//This function jsut calculates the sum of five numbers, in this case GPA, and returns the sum
+
+double calculate_sum(double num1, double num2, double num3, double num4, double num5)
+{
+	double sum = 0.0;
+	sum = num1 + num2 + num3 + num4 + num5;
+	return sum;
+}
+
+// This function Calculates the mean based off of the sum function and returns the mean
+double calculate_mean(double sum)
+{
+	double mean = 0.0;
+	mean = sum / 5;
+	return mean;
+}
+
+// This function calculate deviation of the individual grade points.
+double calculate_deviation(double num, double mean)
+{
+	double deviation = 0.0;
+	deviation = num - mean;
+	return deviation;
+}
+
+// This calculate variance, which is key to our final calculation of standard deviation
+double calculate_variance(double dev1, double dev2, double dev3, double dev4, double dev5)
+{
+	double variance = 0.0, variance2 = 0.0, num = 5.0;
+	variance = (dev1 * dev1) + (dev2 * dev2) + (dev3 * dev3) + (dev4 * dev4) + (dev5 * dev5);
+	return variance;
+}
+
+/* This is the final calculation for standard deviation. It utilizes a lot of elements of other functions above
+to make this calculation*/
+double calculate_standard_deviation(double variance)
+{
+	double deviation1 = 0.0;
+	deviation1 = sqrt(variance / 5);
+	return deviation1;
+}
+//If statemennts used to find the max value of a certain amount of inputted numbers
+double find_max(double num1, double num2, double num3, double num4, double num5)
+{
+	double max = num1;
+
+	if (num2 > max)
+	{
+		max = num2;
+	}
+	if (num3 > max)
+	{
+		max = num3;
+	}
+	if (num4 > max)
+	{
+		max = num4;
+	}
+	if (num5 > max)
+	{
+		max = num5;
+	}
+	return max;
+}
+
+// If statement that finds the min value of a given set of numbers
+double find_min(double num1, double num2, double num3, double num4, double num5)
+{
+	double min = num1;
+
+	if (num2 < min)
+	{
+		min = num2;
+	}
+	if (num3 < min)
+	{
+		min = num3;
+	}
+	if (num4 < min)
+	{
+		min = num4;
+	}
+	if (num5 < min)
+	{
+		min = num5;
+	}
+	return min;
+}
+
+/*
+This function read integers off a file, thats about it.
+*/
+int read_integer(FILE *infile)
+{
+	int gp = 0;
+	fscanf_s(infile, "%d", &gp);
+	return gp;
+}
+
+/*
+This function reads doubles off of a file. These two are called one after another repeatedly so that the integers
+and doubles can be read properly in the function.
+*/
+double read_double(FILE *infile)
+{
+	double gp2 = 0.0;
+	fscanf_s(infile, "%lf", &gp2);
+	return gp2;
+}
+
+/*
+This prints double values into an output file called "output.dat"
+*/
+void print_double(FILE *outfile, double number)
+{
+	fprintf(outfile, "%.2lf\n", number);
+}
